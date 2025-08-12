@@ -19,6 +19,8 @@
         <module>user-service</module>
         <module>first-service</module>
         <module>second-service</module>
+        <module>mvc-apigateway-service</module>
+        <module>flux-apigateway-service</module>
     </modules>
     <licenses>
         <license/>
