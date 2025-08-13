@@ -1,5 +1,6 @@
 package com.example.fluxapigatewayservice.filter;
 
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
@@ -10,8 +11,9 @@ import reactor.core.publisher.Mono;
 
 @Component
 @Slf4j
-public class CustomFilter extends AbstractGatewayFilterFactory<CustomFilter.Config> {
-    public CustomFilter() {
+public class GlobalFilter extends AbstractGatewayFilterFactory<GlobalFilter.Config> {
+
+    public GlobalFilter() {
         super(Config.class);
     }
 
@@ -20,13 +22,26 @@ public class CustomFilter extends AbstractGatewayFilterFactory<CustomFilter.Conf
         return (exchange, chain) -> {
             ServerHttpRequest request = exchange.getRequest();
             ServerHttpResponse response = exchange.getResponse();
-            // Custom pre-filter
-               log.info("Custom pre-filter : request id -> {}", request.getId());
+
+            log.info("Base Messages: {}, {}", config.getBaseMessage(), request.getRemoteAddress());
+
+            // Global pre-filter
+            if(config.isPreLogger()) {
+                log.info("Global Filter Start: request id -> {}", request.getId());
+            }
             return chain.filter(exchange).then(Mono.fromRunnable(() -> {
-            // Custom post-filter
-               log.info("Custom post-filter : request code -> {}", response.getStatusCode());
+                // Custom post-filter
+                if(config.isPostLogger()) {
+                    log.info("Global Filter End: request code -> {}", response.getStatusCode());
+                }
             }));
         };
     }
-    public static class Config {}
+
+    @Data
+    public static class Config {
+        private String baseMessage;
+        private boolean preLogger;
+        private boolean postLogger;
+    }
 }

@@ -15,20 +15,31 @@ spring:
     gateway:
       server:
         webflux:
+          default-filters:
+            - name: GlobalFilter
+              args:
+                baseMessage: Spring Cloud Gateway WebFlux Global Filter
+                preLogger: true
+                postLogger: true
           routes:
             - id: first-service
-              uri: http://localhost:8081/
+              uri: lb://first-service
               predicates:
                 - Path=/first-service/**
               filters:
 #                - AddRequestHeader=f-request, 1st-request-header-from-yaml
 #                - AddResponseHeader=f-response, 1st-response-header-from-yaml
-              - CustomFilter
+              - name: CustomFilter
             - id: second-service
-              uri: http://localhost:8082/
+              uri: lb://second-service
               predicates:
                 - Path=/second-service/**
               filters:
 #                - AddRequestHeader=s-request, 2nd-request-header-from-yaml
 #                - AddResponseHeader=s-response, 2nd-response-header-from-yaml
-                - CustomFilter
+                - name: CustomFilter
+                - name: LoggingFilter
+                  args:
+                    BaseMessage: Hi, there!
+                    preLogger: true
+                    postLogger: true
