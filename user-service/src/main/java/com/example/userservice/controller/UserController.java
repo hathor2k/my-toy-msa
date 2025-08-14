@@ -23,13 +23,6 @@ public class UserController {
     private Greeting greeting;
     private UserService userService;
 
-    @GetMapping("health-check") // http://localhost:8080/health-check
-    public String status() {
-        return String.format("It's Working in User Service"
-                + ", port(local.server.port) : " + env.getProperty("local.server.port")
-                + ", port(server.port) :" + env.getProperty("server.port"));
-    }
-
     @Autowired
     public UserController(Environment env, Greeting greeting, UserService userService) {
         this.env = env;
@@ -37,11 +30,19 @@ public class UserController {
         this.userService = userService;
     }
 
+    @GetMapping("health-check") // http://localhost:8080/health-check
+    public String status() {
+        return String.format("It's Working in User Service"
+                + ", port(local.server.port) : " + env.getProperty("local.server.port")
+                + ", port(server.port) :" + env.getProperty("server.port"));
+    }
+
     @GetMapping("welcome")
     public String welcome(HttpServletRequest request) {
         log.info("users.welcome ip:  {}, {}, {} ,{}",
                 request.getRemoteAddr(), request.getRemoteHost(), request.getRequestURI(), request.getRequestURL());
-        return env.getProperty("greeting.message");
+//        return env.getProperty("greeting.message");
+        return greeting.getMessage();
     }
 
     @PostMapping("/users")

@@ -2,6 +2,8 @@ package com.example.userservice.dto;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 public class UserDto {
     private String email;
@@ -9,4 +11,5 @@ public class UserDto {
     private String pwd;
     private String userId;
     private Data createdAt;
+    private String encryptedPwd;
 }
