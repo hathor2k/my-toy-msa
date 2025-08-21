@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user-service/")
+@RequestMapping("/")
 @Slf4j
 public class UserController {
     private Environment env;
@@ -63,7 +63,7 @@ public class UserController {
     }
 
     @GetMapping("/users")
-    public ResponseEntity<List<ResponseUser>> getUsers() {
+    public ResponseEntity getUsers() {
         Iterable<UserEntity> userList = userService.getUserByAll();
         List<ResponseUser> result = new ArrayList<>();
         userList.forEach(v -> { result.add(new ModelMapper().map(v, ResponseUser.class)); });
