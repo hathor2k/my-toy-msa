@@ -39,7 +39,9 @@ public class WebSecurity {
         AuthenticationManager authenticationManager = authenticationManagerBuilder.build();
 
         http.csrf((csrf) -> csrf.disable())
-                .authorizeHttpRequests(auth -> auth.requestMatchers("/h2-console/**").permitAll()
+                .authorizeHttpRequests(auth -> auth.requestMatchers("/h2-console/**").permitAll()   // 특정 경로 허용
+                        .requestMatchers("/actuator/**").permitAll()    //  특정 경로 허용
+                        .requestMatchers("/health-check/**").permitAll()    // 특정 경로 허용
                         .requestMatchers("/**").access(
                                 new WebExpressionAuthorizationManager("hasIpAddress('127.0.0.1') or hasIpAddress('::1') or " +
                                                                                         "hasIpAddress('10.56.130.51') or hasIpAddress('::1')"))
