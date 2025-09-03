@@ -52,8 +52,8 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     @Override
     protected void successfulAuthentication(HttpServletRequest req, HttpServletResponse res, FilterChain chain, Authentication authResult) throws IOException, ServletException {
-        String uerEmail = ((User) authResult.getPrincipal()).getUsername();
-        UserDto userDetails = userService.getUserDetailsByEmail(uerEmail);
+        String userEmail = ((User) authResult.getPrincipal()).getUsername();
+        UserDto userDetails = userService.getUserDetailsByEmail(userEmail);
 
         byte[] secretKeyBytes = env.getProperty("token.secret").getBytes(StandardCharsets.UTF_8);
 

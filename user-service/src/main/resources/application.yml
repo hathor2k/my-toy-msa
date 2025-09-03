@@ -37,9 +37,9 @@ eureka:
 greeting:
   message: Welcome to Simple E-commerce - 2nd.
 
-token:
-  expiration-time: 86400000 #10 days
-  secret: my-very-long-secret-key-1234567890123456
+#token:
+#  expiration-time: 86400000 #10 days
+#  secret: my-very-long-secret-key-1234567890123456
 
 management:
   endpoints:
