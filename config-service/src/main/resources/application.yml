@@ -9,16 +9,16 @@ spring:
     port: 5672
     username: guest
     password: guest
-  profiles:
-    active: native # 또는 git
+#  profiles:
+#    active: native
   cloud:
     config:
       server:
         native:
-          search-locations: "file:///D:/study/framework/spring-cloud/my-toy-msa/local-repo"
-        git: # default
+          search-locations: "file:///D:/study/framework/spring-cloud/my-toy-msa/native-file-repo"
+        git:
 #          url: file:///D:/study/framework/spring-cloud/my-toy-msa/git-local-repo
-          uri: "https://github.com/joneconsulting/spring-cloud-config"  # 작가의 github repo에서 가져옴
+          uri: "https://github.com/hathor2k/my_toy_msa_repo"  # 작가의 github repo가 마지막 버전이라 그냥 만드는 게 편함
           default-label: master
           # username: [username]
           # password: [password]
