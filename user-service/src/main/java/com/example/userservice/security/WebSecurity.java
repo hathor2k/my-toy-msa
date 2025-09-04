@@ -45,7 +45,7 @@ public class WebSecurity {
                         .requestMatchers("/health-check/**").permitAll()    // 특정 경로 허용
                         .requestMatchers("/**").access(
                                 new WebExpressionAuthorizationManager("hasIpAddress('127.0.0.1') or hasIpAddress('::1') or " +
-                                                                                        "hasIpAddress('172.30.1.98') or hasIpAddress('::1')"))
+                                                                                        "hasIpAddress('10.56.130.80') or hasIpAddress('::1')"))
                         .anyRequest().authenticated())
                 .authenticationManager(authenticationManager).addFilter(getAuthenticationFilter(authenticationManager))
                 .httpBasic(Customizer.withDefaults()).headers((headers) -> headers
