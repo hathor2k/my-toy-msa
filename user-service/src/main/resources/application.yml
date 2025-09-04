@@ -4,8 +4,13 @@ server:
 spring:
   application:
     name: user-service
-  profiles:
-    active: dev
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+#  profiles:
+#    active: dev
 #  config:
 #    import: "optional:configserver:http://localhost:8888"
   h2:
@@ -52,4 +57,6 @@ management:
           - health
           - beans
           - info
+          - httptrace
+          - busrefresh
 

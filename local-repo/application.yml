@@ -1,0 +1,8 @@
+token:
+  expiration_time: 864000000 
+  secret: user_token_native_applicationa-very-long-and-secure-hmac-secret-key#2
+
+
+#gateway:
+#  ip: 192.168.0.8
+

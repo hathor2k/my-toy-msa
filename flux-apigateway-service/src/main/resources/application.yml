@@ -12,6 +12,11 @@ eureka:
 spring:
   application:
     name: flux-apigateway-service
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 #  config:
 #    import: "optional:configserver:http://localhost:8888"
   cloud:
@@ -50,6 +55,14 @@ spring:
                 - RemoveRequestHeader=Cookie
                 - RewritePath=/user-service/(?<segment>.*), /$\{segment}
                 - AuthorizationHeaderFilter
+            - id: user-service-actuator
+              uri: lb://user-service
+              predicates:
+                - Path=/user-service/actuator/**
+                - Method=GET, POST
+              filters:
+                - RemoveRequestHeader=Cookie
+                - RewritePath=/user-service/(?<segment>.*), /$\{segment}
             - id: catalog-service
               uri: lb://catalog-service
               predicates:
@@ -94,3 +107,5 @@ management:
           - beans
           - info
           - httpexchanges
+          - httptrace
+          - busrefresh
