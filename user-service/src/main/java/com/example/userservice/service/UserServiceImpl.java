@@ -53,14 +53,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto getUserByUserId(String userId) {
-        UserEntity userEntity = userRepository.findByEmail(userId);
+        UserEntity userEntity = userRepository.findByUserId(userId);
 
         if (userEntity == null) {
             throw new UsernameNotFoundException("User Not Found");
         }
 
         UserDto userDto = new ModelMapper().map(userEntity, UserDto.class);
-        String orderUrl = String.format(env.getProperty("order_service.url"), userId);
+        String orderUrl = String.format(env.getProperty("order-service.url"), userId);
         ResponseEntity<List<ResponseOrder>> orderListResponse = restTemplate.exchange(orderUrl, HttpMethod.GET, null, new ParameterizedTypeReference<List<ResponseOrder>>() {});
         List<ResponseOrder> orderList = orderListResponse.getBody();
         userDto.setOrders(orderList);

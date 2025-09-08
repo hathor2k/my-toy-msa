@@ -5,8 +5,8 @@ encrypt:
     password: 1q2w3e4r
     alias: apiEncryptionKey
 
-spring:
-  cloud:
-    config:
-      uri: http://localhost:8888
-      name: user-service
+#spring:
+#  cloud:
+#    config:
+#      uri: http://localhost:8888
+#      name: user-service
