@@ -1,0 +1,14 @@
+token:
+  expiration_time: 864000000
+  secret: my-very-long-secret-key-1234567890123456-from-remote-repo-userservice
+
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;
+    username: sa
+    password: '{cipher}AYAUtitDOJ3MXoI4+pH+hjgXvoycj7+OOhmJ3ZR+G3RMAgNcNhph3ny8Uia8/MzblxyxsZ5jZScbYqPP3uZrOHkbsIHZkZQBpai+wUboCrzEBUJ2ZaTWEU/Tzw9EVHOLPTkmcUVnVnXLDxoUjza8Denqb2sYVjqQ7/lCQ8hGTk7zFCSYD26w4Lh6g8rI9ameQVnwxXt7Pke/Qc2ALnVTo7vUadlvypN6tqJaqqJJ3ac4Hux8fGviWjFzlKa9NaxghbSgxVP1RjfnObeQHsZPh+8bnAVcoGaV7+Gd2Ed+Frn1PTHy/93110QBKjWjUisnfk5sBgvm2zOLhtpG2k6n82C4kBegKTbOgGAbuvN0xUheJigiaJsPh1WjnSosXxiusctCGwDshos+tYpVxGxkus8ktcd3YnDULAGNZIaRF6SAWHmmq5vBtVnAdJl6XEKu8PKgpTf1RLStiBfTkgwNk/iVvLcUQEYbIv/g/ngHF5lTGLDBLnlseytuJhdasSUjZZj3vg1LZAxnv+Y1jZbzI3qdC/iMDLn9qxriHBYER96Rhw=='
+#    password: '{cipher}b1e9f096856aa3b5a2d449ad819413478c5e51e53ed5e7f0bd265a300339611d' # 대칭키 암호
+
+order-service:
+  url: http://localhost:8001/order-service/%s/orders
