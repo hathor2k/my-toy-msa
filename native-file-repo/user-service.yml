@@ -1,5 +1,5 @@
 token:
-  expiration-time: 86400000
+  expiration-time: 864000000
   secret: user_token_native_user_service-very-long-and-secure-hmac-secret-key
 
   #gateway:

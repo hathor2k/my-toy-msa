@@ -6,7 +6,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.5.4</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/> <!-- lookup parent from a repository -->
     </parent>
     <groupId>com.example</groupId>
     <artifactId>my-toy-msa</artifactId>
@@ -15,12 +15,14 @@
     <name>my-toy-msa</name>
     <description>my-toy-msa</description>
     <modules>
+        <module>first-service</module>
+        <module>config-service</module>
+        <module>flux-apigateway-service</module>
+        <module>mvc-apigateway-service</module>
+        <module>order-service</module>
+        <module>second-service</module>
         <module>serivce-discovery</module>
         <module>user-service</module>
-        <module>first-service</module>
-        <module>second-service</module>
-        <module>mvc-apigateway-service</module>
-        <module>flux-apigateway-service</module>
     </modules>
     <licenses>
         <license/>
