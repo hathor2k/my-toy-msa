@@ -20,8 +20,8 @@ spring:
           # url: file:///D:/study/framework/spring-cloud/my-toy-msa/git-local-repo
           uri: "https://github.com/hathor2k/my-toy-msa-repo"  # 작가의 github repo가 마지막 버전이라 그냥 만드는 게 편함
           default-label: master
-#          username:
-#          password:
+#          username: []
+#          password: []
 
 management:
   endpoints:
