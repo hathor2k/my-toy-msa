@@ -18,10 +18,10 @@ spring:
           search-locations: "file:///D:/study/framework/spring-cloud/my-toy-msa/native-file-repo"
         git:
           # url: file:///D:/study/framework/spring-cloud/my-toy-msa/git-local-repo
-          uri: "https://github.com/hathor2k/my_toy_msa_repo"  # 작가의 github repo가 마지막 버전이라 그냥 만드는 게 편함
+          uri: "https://github.com/hathor2k/my-toy-msa-repo"  # 작가의 github repo가 마지막 버전이라 그냥 만드는 게 편함
           default-label: master
-          username: git
-          password: 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
+#          username:
+#          password:
 
 management:
   endpoints:
