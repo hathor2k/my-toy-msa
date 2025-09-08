@@ -3,4 +3,4 @@ token:
   secret: user_token_native_user_service-very-long-and-secure-hmac-secret-key
 
   gateway:
-    ip: 10.64.114.194
+    ip: localhost
